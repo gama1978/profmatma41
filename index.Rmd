@@ -160,7 +160,11 @@ knitr::include_graphics('imagens/deployments02.png')
 Para *linkar* os relatórios basta usar o código (Exemplo Relatório 01):
 
 ```
-- [Relatorio 01 (Insira a data)](rel01/index.html){target="_blank"}
+- [Relatorio 01 (13/09/2024)](rel01/index.html){target="_blank"}
+```
+
+```
+- [Relatorio 02 (13/09/2024)](rel02/index.html){target="_blank"}
 ```
 Relatórios desenvolvidos:
 
