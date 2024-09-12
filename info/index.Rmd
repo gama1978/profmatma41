@@ -5,9 +5,12 @@ links:
   - label: GitHub
     url: "https://github.com/"
   - label: Email
-    url: "mailto:name@gmail.com"
+    url: "mailto:alexgama06@yahoo.com.br"
+  - label: WhatsApp
+    url: "https://abrir.link/HfAHL"
 output:
   postcards::jolla
 ---
  
-Descrição sobre o aluno(a)!
+
+Formação acadêmica em Engenharia e Matematica

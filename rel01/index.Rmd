@@ -1,7 +1,7 @@
 ---
-title: "Relatório 01 - Introdução ao R"
-author: "Ben Dêivide"
-date: "12/04/2022"
+title: "Relatório 01 - Introdução ao Markdown e Latex"
+author: "Alex Gama"
+date: "10/09/2024"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -28,26 +28,404 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 --- 
 
-# Objetivo
+# Objetivo:
 
-Descrever as ideias básicas sobre o ambiente R:
+Descrever as ideias básicas em relação a Markdown e Latex:
 
-- Como instalar o R e RStudio;
-- Diferenças entre o R e a IDE RStudio;
-- Como o R trabalha;
-- Comandos elementares;
-- Objetos;
-- Manipulação com objetos;
-- Importação de dados;
-- Pacotes:
-  - Instalação;
-  - Como usar.
+# Markdown:
 
-# Apresentação do relatório
+## O que é o Markdown?
 
-Diante do objetivo do relatório, apresentaremos nas próximas subseções, os pontos a serem discutidos.
+Markdown é uma linguagem de marcação, assim como o HTML. Ele é um jeito de escrever em texto puro, deixando anotações sobre a formatação.
+O Markdown é um sistema de formatação aberto que torna a escrita e a leitura mais simples. Com uma codificação mínima, além de fácil, ele é visualmente mais “limpo”.
 
-## Como instalar o R e o RStudio
+## Criando um arquivo
 
+Para criar um arquivo em markdown, simplesmente salve com a extensão .md
+
+## Ferramentas
+
+Para auxiliar a criação de arquivos markdown existem algumas, como:
+
+- StackEdit
+- Visual Studio Code
+- Typora
+- Dillinger
+- Etc…
+
+## Usando o Markdown
+
+O markdown é convertido em HTML, então se já tiver conhecimento de HTML é mais simples de absorver o conteúdo.
+
+### Comentários
+
+Para criar comentários podemos usar a mesma sintaxe do html.
+<img src=comentario.png>
+
+### Title
+
+<img src=title.png>
+
+### Lista
+
+#### Lista desordenada
+
+Para criar uma lista não ordenada com o markdown podemos usar tanto *, quanto — ou +, todos têm a mesma funcionalidade, para criar uma sublista, apenas insira dois espaço ou um tab no item, exemplo:
+
+<img src=lista.png>
+
+#### Lista ordenada
+
+<img src=lista1.png>
+
+### Lista de tarefas 
+
+Podemos criar também uma lista de tarefas, com a CheckBox preenchida ou não. Vejamos o exemplo:
+
+**Comando**
+
+<img src=box.png>
+
+**Resultado do Comando**
+
+- [ ] Esta é uma CheckBox não marcada
+- [x] Esta é uma CheckBox marcada
+
+### Links
+
+É possível colocar algum link em seu 'Readme', e ainda colocá-lo por debaixo de uma palavra, é o chamado link-âncora, acessando-o ao clicar na palavra. Entre colchetes [ ] a palava que deseja por debaixo dos panos. E entre parentêses ( ) o link para acesso. Vejamos o exemplo do código:
+
+**Comando**
+
+<img src=link.png>
+
+**Resultado do Comando**
+
+Clique [aqui](https://github.com) para acessar à página do GitHub.
+
+Lembre-se que pode criar links para outros repositórios seus no GitHub, também é possível acessar outro arquivo no mesmo repositório, e até mesmo a posição da página do leitor no mesmo arquivo. Por exemplo, clique aqui para acessar o título 'Sintaxe' neste mesmo arquivo. Tais possibilidades deixam seu README bem mais apresentável, e com uma interatividade maior, demonstrando que o escritor do código entende bem de MarkDown.
+
+Para links sem uma palavra por cima do link, use '< >' para envolver o link desejado, assim o link aparecerá por inteiro ao leitor. Exemplo:
+
+**Comando**
+
+<img src=link1.png>
+
+**Resultado do Comando**
+
+<https://google.com.br>
+
+### Como adicionar imagens no Markdown?
+
+Comandos: (interno a < > colocamos: img src = “logo”) ou utilizamos o comando “Ponto de exclamação!, colchetes [figura 1 ] e (imagem)”.
+
+Adicionando imagens
+
+Para adicionar uma imagem a um documento, adicione seu arquivo de imagem à pasta do documento (neste exemplo nosso, esta na pasta rel01) e, em seguida, faça referência à imagem no arquivo index.md do documento usando os símbolos < > e internamente aos símbolos use: img src = ufsj.png. Ou a sintaxe Markdown equivalente (Ou seja, existem outras formas de inserir imagens no Markdown).
+
+Veja o exemplo a seguir:
+
+<img src="ufsj.png" width="250" height="250">
+
+### Como adicionar tabelas
+
+Escolha os títulos das colunas e use *|* para delimitar as colunas. Depois, utilize hífen - na segunda linha para indicar que acima estão os títulos das colunas, usando novamente o *|* para delimitar colunas. Veja um exemplo abaixo:
+
+**Comando dado:**
+
+<img src=tabela.png>
+
+**Resultado do Comando:**
+
+|Exemplo    | Valor do exemplo
+:---------: | :-----------:
+|Exemplo 1  | R$ 10
+|Exemplo 2  | R$ 8
+|Exemplo 3  | R$ 7
+|Exemplo 4  | R$ 8
+
+### Estilo de texto
+
+O markdown possui diversas formas de ajustar o texto.
+
+#### **Texto em negrito**
+
+Para usar texto negrito use dois asteriscos **(dois asteriscos antes do texto e dois depois do texto)**.
+
+#### **Texto em italico**
+
+Para usar texto itálico use um underscore (_) ou só um asterisco(*).(_um antes do texto e o outro depois do texto_)
+
+#### **Texto riscado**
+
+Para usar texto riscado use dois til.(~~uma antes do texto e outro depois do texto~~)
+
+#### **Texto sobrescrito**
+
+Para usar texto sobrescrito é necessário usar a tag < sup > antes da palavra e depois dela.
+
+Texto <sup>sobrescrito<sup>
+
+#### **Texto subscrito**
+
+Para usar texto subscrito é necessário usar a tag < sub > antes da palavra e depois dela.
+
+Texto <sub>subscrito<sub>
+
+#### **Texto marcado**
+
+Para marcar um texto podemos usar a tag < mark >,antes do texto ou palavra.
+
+Texto <mark>marcado</mark>
+
+### Usando fórmulas matemáticas
+
+Para usar fórmulas de matemática use o dólar ($) antes e depois da fórmula que desejar exibir, como o exemplo dado.
+
+**Comando dado**
+
+<img src=formula1.png>
+
+**Resultado do comando**
+
+$-b \pm \sqrt{b² — 4ac} \over 2a$
+
+# Latex
+
+## Por que aprender Latex
+<div class="text-justify">
+
+LaTeX é usado em todo o mundo para documentos científicos, livros,
+bem como muitas outras formas de publicação. Não só ele pode criar
+lindamente documentos impressos, mas também permite que os usuários
+abordem rapidamente as partes mais complicadas da composição, como inserir
+matemática, criar tabelas de conteúdo, fazer referência e criar bibliografias e
+ter um layout consistente em todas as seções. Devido ao grande número de
+pacotes open source disponíveis, as possibilidades com LaTeX são infinitas.
+Estes pacotes permitem que os usuários façam ainda mais com o LaTeX, como
+adicionar notas de rodapé, desenhar esquemas, criar tabelas etc.
+Uma das razões mais importantes pelas quais as pessoas usam o LaTeX é
+que ele separa o conteúdo do documento do seu estilo. Isso significa que, depois
+de ter escrito o conteúdo do seu documento, podemos alterar sua aparência com
+facilidade. Da mesma forma, você pode criar um estilo de documento que pode ser usado para padronizar a aparência de muitos documentos diferentes. Isso
+permite que periódicos científicos criem modelos para envios. Esses modelos
+têm um layout pré-feito, o que significa que apenas o conteúdo precisa ser
+adicionado. Na verdade, existem centenas de modelos disponíveis para tudo,
+desde currículos até apresentações de slides.
+
+</div>
+
+## Corpo do documento
+
+
+Um  arquivo  fonte  do  LATEX  contem  alem  do  texto  a  ser  construido,  os  comandos  que indicam como o texto deve ser formatado. Esses comandos se dividem basicamente em dois casos:
+
+•	Comandos  Globais:  definições  aplicadas  em  todo  documento,  que  constituem  o Preâmbulo;
+
+•	Comandos Locais:  definições aplicadas estritamente no local onde foram inseridas.
+O comando global mínimo exigido para um preâmbulo de um arquivo LATEX é:
+
+<img src=comando.png>
+
+## Comandos básicos
+
+No primeiro comando da estrutura citada no tópico anterior, a palavra classe indica o tipo de documento a ser produzido, a qual pode ser substituída por uma das seguintes opções:
+
+•	article: documentos curtos e artigos.
+
+•	report:  documentos longos, com sec¸c˜oes e cap´ıtulos, como teses e dissertações.
+
+•	book:  produção de livros.
+
+•	letter: cartas.
+
+Em opções, escolhemos além do tamanho da fonte e do tipo de folha a ser impressa, outras caracteristicas como:
+
+•	twoside:  impressão  em  ambos  os  lados  da  página,  sendo  que  a  margem  para  encadernação  estará  à  esquerda,  no  caso  de  páginas ímpares,  e  à  direita  nas  páginas pares.
+
+•	oneside:  impressão em um só lado da página.
+
+•	twocolumn:  o documento será formatado em duas colunas.
+
+Exemplo 1 O comando
+
+``\documentclass[12pt,a4paper,twoside]{article}``
+
+indica que o nosso  texto será formatado com letra no tamanho	12pt,  impresso em folha A4 e no modo frente e verso.
+
+Além das características do comando documentclass, podemos adicionar no preâmbulo do arquivo alguns pacotes que podem aprimorar o texto que desejamos digitar. Por exemplo:
+
+``\usepackage[latin1]{inputenc}``  (Habilita  o  uso  de  acentos  diretamente
+do  teclado.)
+ 
+``\usepackage[brazil]{babel}``	(Editor  flexível  quanto  à escolha do idioma.)
+ 
+``\usepackage{graphicx}``	(Permite incluir figuras e colorir o texto)
+
+``\usepackage{color}``	(Permite colorir  o  texto)
+
+``\usepackage{amsmath}``	(Habilita  as  funções  do  modo  matemático)
+
+``\usepackage{amsfonts}``	(Estilos de letras para o ambiente
+matemático)
+
+``\usepackage{amssymb}``	(Habilita  a  utilização  de  símbolos)
+
+Com base nestes novos comandos, podemos montar um preâmbulo mais refinado, onde será  possível  formatar  textos  mais  complexos,  como  por  exemplo,  textos  com  caracteres matemáticos, figuras, tabelas, dentre outros.
+
+## Estrutura básica
+
+``\documentclass[12pt,a4paper,twoside]{article}``
+
+``\usepackage[latin1]{inputenc}``
+
+``\usepackage[brazil]{babel}``
+
+``\usepackage{amsmath}``
+
+\usepackage{graphicx,color}
+
+``\usepackage{amsfonts}``
+
+``\usepackage{amssymb}``
+
+``\begin{document}``
+
+``\end{document}``
+
+O texto que desejamos escrever, deve ser inserido entre os comandos ``\begin{document}`` e  ``\end{document}``,  que  determinam,  respectivamente,  o  começo  e  o  fim  do  documento. Tais comandos são obrigatórios e, como já destacado anteriormente, são parte da exigência mínima para que um software  de edição de arquivos no formato LATEX gere determinado
+documento.  Cabe destacar, que qualquer caracter colocado após o comando ``\end{document}``,
+será ignorado pelo software.
+
+Exemplo  2:
+
+Se  no  arquivo  LATEX  escrevermos  exatamente  como  abaixo:
+
+``\begin{document}``
+ 
+ 
+"A  Matemática  não  mente.  Mente  quem  faz  mau  uso  dela." (Albert Einstein)
+
+
+``\end{document}``
+
+"Na  teoria  da  relatividade,  não  existe  tempo  absoluto  único; em  vez  disso,  cada  indivíduo  tem  sua  própria  medida  de  tempo, que  depende  de  onde  ele  se  encontra  e  de  como  está  se  movendo" (Stephen Hawking)
+
+quando compilarmos, visualizaremos:
+
+“A  Matemática  não  mente.  Mente  quem  faz  mau  uso  dela.”(Albert  Einstein)
+
+Para utilizar a Estrutura básica 3.4, inicialmente abra o programa TeXnicCenter, ou outro software de sua preferência, e crie um documento clicando na aba File, selecionando a opção New  e, em seguida, a opção File.  Por fim, basta copiar os camandos da estrutura e compilar o arquivo (Ctrl + Shift + F 5).
+
+## Formatação
+
+### Formatação de páginas
+
+Para a formatação da página em relação ao dimensionamento da folha, usamos no preâmbulo o seguinte comando:
+
+``\usepackage{geometry}``
+
+``\geometry{paperwidth=210mm,paperheight=297mm,
+textwidth=160mm,textheight=210mm,top=30mm,
+bottom=20mm,left=30mm,right=20mm}``
+
+Cada parâmetro de dimensionamento citado acima, tem o significado como descrito na Tabela 2.1.
+
+### Estilos e tamanhos de letras
+
+No LATEX podemos alterar tanto o estilo quanto o tamanho da letra, através de comandos locais.
+
+<img src=tabela1.png>
+
+### Estilos
+
+As palavras podem ser sublinhadas ou destacadas em negrito, itálico, entre outros,como descrito abaixo.
+
+<img src=tabela2.png>
+
+### Tamanho
+
+Para redefinir o tamanho da letra utilizada em uma ´única palavra, fazemos uso dos comandos em destaque na seguinte tabela.
+
+<img src=tabela3.png>
+
+### Caracteres especiais
+
+No LATEX , existem carecteres especiais que para serem gerados é necessária a utilização de uma barra “\”, como mostrado a seguir.
+
+<img src=tabela4.png>
+
+Tais caracteres são especiais pois, se não colocarmos a barra antes deles, estes caracteres funcionam como parte de comandos que já são pré-estabelecidos pelo software.
+Por exemplo, o caracter “&” é utilizado para delimitar colunas em tabelas e matrizes,enquanto o caracter “ _ ” é usado para fazer subíndices de uma sequência como a<sub>i<sub>.
+
+### Comentários
+
+O que for colocado à direita de “%” é um comentário e o LATEX não o considera no documento de saída.
+
+Abaixo colocamos três comentários ultilizando o caracter “%”
+
+``\begin{document}`` %início do documento.
+
+O único homem que está isento de erros, é aquele que
+não arrisca acertar. (Albert Einstein) %texto.
+
+``\end{document}`` %fim do documento.
+
+que quando compilados, os mesmos não aparecerão no documento:
+
+O único homem que está isento de erros, é aquele que não arrisca acertar. (Albert Einstein)
+
+###  Espaçamentos, quebras de páginas e linhas
+
+#### Espaçamentos
+
+No LATEX espaços consecutivos são ignorados e não são inseridos no documento de saída.
+
+Escrevendo:
+
+Hoje  vamos  aprender  a   derivar!
+
+Resultará em:
+
+Hoje vamos aprender a derivar!
+
+Para que o LATEX reconheça os espaços devemos colocar barras invertidas “\” separadas por espaços.
+
+Quando digitarmos:
+
+Hoje \ \ \ \ \ \ \ \ \ \ vamos \ \ \ \ \ \ \ \ \ \ derivar !
+
+Teremos:
+
+Hoje vamos derivar!
+
+Ainda, é possível alterar o tamanho dos espaços em branco através dos comandos:
+
+``\vspace{medida em centímetros}`` (Espaçamento vertical).
+
+``\hspace{medida em centímetros}`` (Espaçamento horizontal).
+
+A frase:
+
+Cálculo Diferencial e Integral, foi gerada a partir de
+Cálculo ``\hspace{2cm}`` Diferencial``\hspace{2cm}`` e ``\hspace{2cm}`` Integral.
+
+#### Quebra de páginas
+<div class="text-justify">
+
+Um novo parágrafo é gerado quando deixamos uma linha em branco entre duas frases.
+Também é possivel obter um novo parágrafo fazendo uso do comando ``\par`` no início do novo parágrafo. Para iniciar uma nova linha basta digitar duas barras invertidas ``“\\”`` onde desejamos finalizar a linha ou, também, podemos utilizar o comando ``\newline``. Quando quisermos começar imediatamente uma nova página, usamos o comando newpage.
+Um outro comando bastante útil é o ``\linebreak``, que quebra a linha deixando o texto justificado.
+Escrevendo da forma:
+
+Quebra de linha.``\linebreak``
+
+</div>
+
+# Conclusões
+<div class="text-justify">
+A partir deste relatório tivemos a oportunidade de depararmos com duas ferramentas que nos auxiliará em muito na elaboração do trabalho ciêntifico apresentado no final do curso.Nos familiarizamos e tivemos um primeiro contato com a estrutura básica e os principais comandos de cada uma das ferramentas. Dado maior enfase ao Markdown por se tratar da confecção dos relátorios entregues na disciplina de Estatística.
+
+</div>
 
 

@@ -1,7 +1,7 @@
 ---
-title: "Relatório 02 - Como usar o projeto Relatórios"
-author: "Ben Dêivide"
-date: "12/04/2022"
+title: "Relatório 02 - Estatística Descritiva"
+author: "Alex Gama"
+date: "12/09/2024"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -29,9 +29,168 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever como realizar os relatórios.
+Utilizar métodos e técnicas estatísticas que possibilitem sumarizar, calcular e
+analisar informações com vistas à tomada de decisões.
 
-# Apresentação do relatório
+## Estatística Descritiva
 
-Aqui será o local para apresentar o material sobre o relatório.
+As estatísticas descritivas são números que resumem e descrevem o conjuntos de dados. As estatísticas descritivas apenas “descrevem” os dados, elas não representam generalizações da amostra para a população.
+
+## Conceitos básicos
+
+### População
+
+É todo conjunto, finito ou infinito, que possui ao menos uma característica em comum entre todos os seus elementos componentes.
+
+População Finita: é aquela população em que é possível enumerar todos os seus elementos componentes.
+
+População Infinita: é aquela população em que não é possível enumerar todos os seus elementos
+componentes.
+
+### Censo
+
+É o conjunto dos dados estatísticos dos habitantes de uma cidade, estado, etc, com todas as suas características, num determinado período de tempo. É a coleta exaustiva das informações de todas as “N” unidades da população.
+
+### Amostra
+
+É um subconjunto, uma parte selecionada da totalidade de observações abrangidas pela população da qual se quer inferir alguma coisa. (parte representativa da população)
+
+### Amostragem
+
+É o processo de coleta das informações de parte da população - “n” - chamada
+amostra, mediante métodos adequados de seleção destas unidades.
+
+
+# Coleta, organização e apresentação dos dados
+
+A coleta de dados é o processo de reunir informações ou dados brutos a partir de diversas fontes para análise posterior. Essa etapa é crucial, pois a qualidade da análise estatística depende diretamente da qualidade dos dados coletados.
+
+A organização dos dados refere-se ao processo de estruturar e classificar os dados brutos de maneira sistemática para facilitar a análise e interpretação. Isso envolve a criação de tabelas, agrupamento de dados em categorias, e a preparação para análises estatísticas.
+
+A apresentação dos dados é o processo de exibir os dados organizados de maneira clara e compreensível, geralmente utilizando gráficos, tabelas e diagramas. O objetivo é comunicar os resultados de forma eficaz para facilitar a interpretação e a tomada de decisões.
+
+# Medidas de Posição
+
+A tendência central da distribuição de freqüências de uma variável em um conjunto de dados é caracterizada pelo valor típico dessa variável. Essa é uma maneira de resumir a informação contida nos dados, pois escolheremos um valor para representar todos os outros.
+Assim, poderíamos perguntar, por exemplo, qual é a altura típica dos brasileiros adultos no final da década de 90 e compará-la com o valor típico da altura dos brasileiros no final da década de 80, a fim de verificar se os brasileiros estão se tornando, em geral, mais altos, mais baixos ou não sofreram nenhuma alteração em sua altura típica. Fazer essa comparação
+utilizando medidas-resumo (as alturas típicas em cada período) é bem mais sensato do que comparar os dois conjuntos de dados valor a valor, o que seria inviável.
+Mas, como identificar o valor típico de um conjunto de dados? Existem três medidas que podem ser utilizadas para descrever a tendência central de um conjunto de dados: a média, a mediana e a moda. Apresentaremos essas três medidas e discutiremos suas vantagens e desvantagens.
+
+## . Média Aritmética Simples 
+
+A média aritmética simples (que chamaremos apenas de média) é a medida de tendência central mais conhecida e usada para o resumo de dados. Essa popularidade pode ser devida à
+facilidade de cálculo e à idéia simples que ela nos sugere. De fato, se queremos um valor que represente a altura dos brasileiros adultos, por que não medir as alturas de uma amostra de brasileiros adultos, somar os valores e dividir esse “bolo” igualmente entre os participantes? Essa é a idéia da média aritmética.
+Para apresentar a média, primeiramente vamos definir alguma notação. A princípio, essa notação pode parecer desnecessária, mas facilitará bastante nosso trabalho futuro.
+
+<img src=media.png>
+
+## Mediana
+
+A mediana de um conjunto de dados é definida como sendo o “valor do meio” desse conjunto de dados, dispostos em ordem crescente, deixando metade dos valores acima dela e metade dos valores abaixo dela.
+Como calcular a mediana? Basta seguir sua definição. Vejamos:
+
+• **n é ímpar:** Existe apenas um “valor do meio”, que é a mediana
+
+Seja o conjunto de dados ( 2 ; 3,3 ; 2,5 ; 5,6 ; 5 ; 4,3 ; 3,2 ).
+Ordenando os valores (2 ; 2,5 ; 3,2 ; 3,3 ; 4,3 ; 5 ; 5,6).
+O valor do meio é o 3,3 . A mediana é o valor 3,3.
+
+• **n é par:** Existem dois “valores do meio”. A mediana é média aritmética simples deles.
+Seja o conjunto de dados ( 3 ; 4,5 ; 5,5 ; 2,5 ; 1,3 ; 6 ).
+Ordenando os valores (1,3 ; 2,5 ; 3 ; 4,5 ; 5,5 ; 6)
+Os valores do meio são 3 e 4,5. A mediana é (3 + 4,5)/2 = 3,75.
+Como medida de tendência central, a mediana é até mais intuitiva do que a média, pois representa, de fato, o centro (meio) do conjunto de valores ordenados. Assim como a média, o valor da mediana não precisa coincidir com algum dos valores do conjunto de dados. Em
+particular, quando os dados forem de natureza contínua, essa coincidência dificilmente ocorrerá.
+
+## Moda
+
+Uma maneira alternativa de representar o que é “típico” é através do valor mais freqüente da
+variável, chamado de moda.
+
+<img src=moda.png>
+
+No caso de uma tabela de freqüências, a classe de maior freqüência é chamada classe modal. A moda é também a única das medidas de tendência central que faz sentido no caso de variáveis qualitativas. Assim, a categoria dessas variáveis que aparecer com maior freqüência é chamada de categoria modal.
+
+# Medidas de dispersão
+
+As Medidas de dispersão (ou variabilidade) são medidas que indicam a variação dos dados de um conjunto
+
+Podemos dividi-las em dois grupos:
+
+**Medidas de dispersão absoluta:**
+
+- amplitude total;
+
+- amplitude interquartílica;
+
+- desvio médio;
+
+- variância;
+
+- desvio-padrão.
+
+Vejamos sobre as propriedades da dispersão absoluta.
+
+1ª Propriedade: A soma ou a subtração de uma constante não altera as medidas de dispersão absoluta.
+
+2ª Propriedade: A multiplicação ou a divisão de uma constante altera as medidas de dispersão absoluta.
+
+**Medidas de dispersão relativa:**
+
+coeficiente de variação (de Pearson); e
+variância relativa.
+Também conheçamos as propriedades da dispersão relativa
+
+1ª Propriedade: A soma ou a subtração de uma constante altera as medidas de dispersão relativa.
+
+2ª Propriedade: A multiplicação ou a divisão de uma constante não altera as medidas de dispersão relativa.
+
+## Amplitude total
+
+Sabemos que a amplitude é a diferença entre o valor máximo e mínimo, bem tranquilo.
+
+Apenas destacamos que a amplitude para dados agrupados em classes é encontrada a partir da diferença entre o ponto médio da última classe e da primeira.
+
+<img src=amplitude.png>
+
+## Desvio médio
+
+O desvio médio é uma medida estatística que representa a média das diferenças entre cada valor de um conjunto de dados e a média aritmética desses dados. Em outras palavras, o desvio médio indica o quanto, em média, os dados se afastam da média.
+
+<img src=formula.png>
+
+Vejamos um exemplo númerio para facilitar o entendimento.
+
+<img src=tabela.png>
+
+
+<font color=\"red\">**Importante observar que buscamos o somatório do módulo dessa diferença.**</font>
+
+
+Dm = 12/5 = 2,4
+
+## Variância
+
+A variância basicamente mostra o quão dispersos os dados estão em relação à média. Trata-se da média dos quadrados dos desvios em relação à média.
+
+Vejamos a fórmula da variância populacional (parâmetro populacional) e variância amostral (estimador), respectivamente.
+
+<img src=variancia.png>
+
+Assim, podemos pensar também que a variância é a diferença entre a média dos quadrados e o quadrado das médias.
+
+Também destacamos a seguinte Propriedade da Variância.
+
+Propriedade: A multiplicação ou a divisão de todos os valores de uma variável por uma constante k é afeta pelo valor quadrado dessa constante.
+
+## Desvio padrão
+
+Basicamente ele pode ser determinado pela raiz quadrada da variância.
+
+Assim os valores próximos da média darão um desvio padrão pequeno e por ser uma raiz quadrada, o valor sempre será igual ou maior que zero.
+
+Atente-se a diferença entre a propriedade da multiplicação ou divisão de uma constante para o desvio padrão e variância.
+
+Propriedade: A multiplicação ou a divisão de todos os valores de uma variável por uma constante k é afeta pelo valor dessa constante.
+
 
