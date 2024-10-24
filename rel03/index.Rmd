@@ -1,7 +1,7 @@
 ---
 title: "Relatório 03 - Distribuição de probabilidade"
-author: "Ben Dêivide"
-date: "12/04/2022"
+author: "Alex Gama"
+date: "23/10/2024"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -27,11 +27,317 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 --- 
 
-# Objetivo
+# Noções sobre conjuntos
 
-Descrever o objetivo do relatório!
+## Objetivos
 
-# Apresentação do relatório
+• Compreender intuitivamente noções básicas relacionadas
+a conjuntos.
+• Conhecer alguns fatos da história da Teoria dos Conjuntos.
+• Revisar notações usadas no estudo dos conjunto.
 
-Aqui será o local para apresentar o material sobre o relatório.
+### Introdução
 
+A compreensão de noções básicas sobre conjuntos é essencial para a
+Matemática. Para sermos mais enfáticos, hoje sabemos que todos os
+conceitos da Matemática moderna, desde os mais básicos, como o de
+números naturais, até os mais complexos, como o de variedades diferenciais, podem
+ser formulados na linguagem de conjuntos.
+
+### Idéia intuitiva de conjunto
+
+Já deve estar claro que a noção de “conjunto” é uma noção fundamental da
+Matemática. Ela é a estrutura matemática sobre a qual todas as outras podem ser construídas
+(número, relação, função, ...). O conceito de conjunto aparece em todos os ramos da
+Matemática e, a partir dele, podemos definir muitos outros conceitos matemáticos.
+Não definimos o que é um conjunto. Esse é um conceito primitivo. A ideia
+intuitiva que temos é a de que:
+
+Um conjunto é qualquer coleção, lista ou classe de objetos bem definida. Os
+objetos de um conjunto podem ser qualquer coisa: números, pessoas, letras, rios,
+etc., e são chamados elementos ou membros do conjunto.
+
+### Conjuntos finitos e infinitos
+
+Grosso modo, um conjunto é finito se
+consiste de um número específico de elementos
+diferentes, isto é, se, ao contarmos os seus diferentes membros, o processo de contagem chega a um final. De outro modo, o conjunto é infinito.
+
+
+### Conjuntos vazio, unitário e universal
+
+• Conjunto vazio ou nulo é aquele que não contém elementos. Representamos um
+conjunto vazio por { } ou pelo símbolo ∅. São exemplos de conjuntos vazios:
+
+Exemplo 1:
+A = {x | x é ímpar e múltiplo de 2}
+B = {x | x ≠ x}
+
+• Conjunto unitário é aquele que só possui um elemento.
+
+Exemplo 2:
+C = {x | 3x+1=7} = {2}
+
+• Conjunto universal ou universo é conjunto de todos os elementos
+existentes em um determinado assunto em estudo. Dependendo do
+conjunto universo com que estamos trabalhando, um determinado
+problema pode ter uma ou outra solução, ou até não ter solução.
+Designaremos o conjunto universo por U.
+
+Exemplo 3:
+Se procurarmos as soluções inteiras de certa equação, então o nosso conjunto
+universo é Z , conjunto de todos os números inteiros.
+
+### Igualdade de conjuntos
+
+Um conjunto A é igual a um conjunto B, A = B, se ambos têm os mesmos
+elementos, isto é, se cada elemento pertencente a A pertencer também a B,
+e se cada elemento pertencente a B pertencer também a A. Simbolicamente:
+A = B ⇔ (∀x) (x∈A ⇔ x∈B).
+
+### Subconjuntos:Definições e teoremas
+
+#### Relação de inclusão e propriedades
+
+Se cada elemento do conjunto A é também um elemento do conjunto B, dizemos que A
+é um subconjunto de B, ou que A está contido em B, ou que A é parte de B e indicamos
+por A ⊂ B. O símbolo ⊂ é denominado sinal de inclusão e a relação A ⊂ B chama-se
+relação de inclusão. Simbolicamente:
+A ⊂ B ⇔ (∀x) (x∈A ⇒ x∈B).
+
+Propriedades da Inclusão
+
+∅ ⊂ A, qualquer que seja o conjunto A.
+
+1. A ⊂ A (reflexividade);
+
+2. Se A ⊂ B e B ⊂ A, então A = B (antissimetria);
+
+3. Se A ⊂ B e B ⊂ C, então A ⊂ C (transitividade).
+
+# Operações com conjuntos
+
+## Objetivos
+
+• Realizar operações com conjuntos.
+
+• Entender propriedades algébricas das operações
+com conjuntos.
+
+• Relacionar a linguagem dos conjuntos com a
+linguagem da lógica.
+
+### Introdução
+
+Na aritmética, podemos somar, multiplicar ou subtrair dois números quaisquer.
+Na Teoria dos Conjuntos, há três operações análogas: união, interseção, e
+complementação. Neste tópico, apresentaremos estas operações básicas com
+conjuntos.
+
+### União
+
+Dados os conjuntos A e B, a reunião (ou união) de A e B é o conjunto, denotado
+por A ∪ B (que se lê “A união B”), constituído de todos os elementos que
+pertencem a A ou a B ou a ambos. Simbolicamente:
+A ∪ B = {x | x ∈ A ou x ∈ B}.
+
+Exemplo 1:
+
+{a, b, c} ∪ {c, d, e} = {a, b, c, d, e}
+<img src=conjunto1.png>
+
+### Interseção
+
+Dados os conjuntos A e B, a interseção de A e B é o conjunto, denotado por A ∩
+B (que se lê “A interseção B”), constituído de todos os elementos que pertencem
+ao mesmo tempo a A e a B. Simbolicamente:
+
+A ∩ B = {x | x ∈ A e x ∈ B}.
+
+Exemplo 2:
+
+{a, b, c} ∩ {b, c, d, e} = {b, c}
+<img src=conjunto2.png>
+
+Propriedades que relacionam a união e a interseção:
+
+1. A ∪ (A ∩ B) = A
+
+2. A ∩ (A ∪ B) = A
+
+3. A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C) (distributiva da união em relação à
+interseção)
+
+4. A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C) (distributiva da interseção em relação
+à união)
+
+### Diferença e complementação
+
+Dados os conjuntos A e B, a diferença dos conjuntos A e B (ou, complemento
+de B em A) é o conjunto, denotado por A – B (que se lê “A diferença B” ou “A
+menos B”), constituído de todos os elementos que pertencem a A, mas não
+pertencem a B. Simbolicamente:
+A – B = {x | x ∈ A e x ∉ B}.
+
+Exemplo 3:
+{a, b, c, d} – {c, d, e, f} = {a, b}
+
+Quando B ⊂ A, a diferença A – B é chamada
+também o complementar de B em relação a
+A e é denotada por <img src=complementar.png>. O complementar de
+um dado conjunto A em relação a um conjunto
+universo U fixo é definido abaixo:
+
+Fixado um conjunto universo U e dado um conjunto A (subconjunto de U),
+complementar de A é o conjunto, denotado por <img src=complementar1.png>
+ (que se lê “complementar de A”), constituído de todos os elementos de U que não pertencem a A.
+Simbolicamente:
+<img src=complementar1.png> = {x | x ∈ U e x ∉ A}.
+
+<img src=complementar3.png>
+
+# Probabilidade
+
+## Conceitos Básicos de Probabilidade
+• Fenômeno Aleatório: É um processo de coleta de dados em que os resultados possíveis são conhecidos mas não se sabe qual deles ocorrerá. Assim, um fenômeno aleatório pode ser a contagem de ausências de um funcionário em um determinado mês, o resultado do lançamento de uma moeda, verificar o resultado de um exame de sangue, entre outros.
+
+• Espaço Amostral: O conjunto de todos os resultados possíveis do fenômeno aleatório é chamado de espaço amostral. Vamos representá-lo por Ω.
+
+ Exemplos:
+
+ Lançamento de uma moeda. Ω = {cara, coroa}. 
+
+ Lançamento de um dado. Ω = {1, 2, 3, 4, 5, 6}.
+
+ Número de chips defeituosos em uma linha de produção durante 24 horas. Ω =
+{0, 1, 2, 3, . . . , n}, sendo n o número máximo de itens defeituosos.
+
+ Tempo de reação de uma pomada anestésica aplicada em queimados. Ω = {t ∈
+ℜ | t≥ 0 }.
+
+• Evento: Qualquer subconjunto do espaço amostral Ω é chamado de evento. Serão representados por letras maiúsculas A, B, . . . . Dentre os eventos podemos considerar o evento união de A e B, denotado por A ∪ B, que, equivale à ocorrência de A, ou de B, ou de ambos. 
+A ocorrência simultânea dos eventos A e B, denotada por A ∩ B é chamada de evento interseção. Dois eventos A e B dizem-se mutuamente exclusivos ou disjuntos,quando a ocorrência de um deles impossibilita a ocorrência do outro. Os dois eventos não têm nenhum elemento em comum, isto é, A ∩ B = ∅ (conjunto vazio).
+
+Exemplos:
+
+Suponha um fenômeno aleatório conduzido com a finalidade de se conhecer a
+eficiência de uma terapia na cura de uma síndrome. Para tanto, dois pacientes foram tratados com a referida terapia. Vamos representar <img src=amostral1.png>, como curado e não curado, respectivamente.
+O espaço amostral nesse caso é dado por:
+
+<img src=amostral4.png>
+
+Considere os seguintes eventos: A ¨obter uma cura¨ e B ¨obter quatro curas¨: Sendo assim, temos:
+
+ <img src=amostral3.png>  e B = ∅.
+ 
+## Definição clássica de probabilidade
+
+Em fenômenos aleatórios tais como lançamento de uma moeda, de um dado, extração de uma carta de um baralho entre outros, temos que todos os resultados possíveis tem a mesma chance de ocorrer. Assim, por exemplo no lançamento de uma moeda a probabilidade do evento cara ou coroa ocorrer são igualmente prováveis, ou seja, a probabilidade atribuída a cada um é 1/2.
+A probabilidade de um evento A qualquer ocorrer pode ser definida por:
+
+<img src=formula.png>
+
+
+## Propriedades de probabilidades
+
+É uma função P(.) que associa números reais aos elementos do espaço amostral e satisfaz as condições:
+
+<img src=Propriedades.png>
+
+
+## Teorema da soma
+
+Dado dois eventos A e B, a probabilidade de pelo menos um deles ocorrer é igual a soma das probabilidades de cada um menos a probabilidade de ambos ocorrerem simultaneamente, ou seja:
+
+P(A ∪ B) = P(A) + P(B) − P(A ∩ B).
+
+Se A e B forem mutuamente exclusivos, teremos P(A∩B) = 0. 
+
+Assim,P(A ∪ B) = P(A) + P(B).
+
+Exemplo: Considere o experimento lançamento de um dado e os seguintes eventos:
+
+A = {sair número 5},
+
+B = {sair número par} e
+
+C = {sair número ímpar}.
+
+Determinar: Ω, P(A), P(B), P(C), P(A∪B), P(A∪C) e P(A).
+
+Ω = {1, 2, 3, 4, 5, 6}.
+
+P(A) = 1/6
+
+P(B) = 3/6
+
+P(C) = 3/6
+
+P(A ∪ B) = 1/6 + 3/6 = 4/6
+
+P(A ∪ C) = 1/6 + 2/6 = 3/6
+
+P(A) = 1 − 1/6 = 5/6
+
+## Probabilidade condicional
+
+Existem situações em que a chance de um particular evento acontecer depende do resultado de outro evento. A probabilidade condicional de A dado que ocorreu B pode ser determinada dividindo-se a probabilidade de ocorrência de ambos os eventos A e B pela probabilidade do
+evento B; como se mostra a seguir:
+
+<img src=condicional.png>
+
+Exemplo: Em uma universidade foi selecionada uma amostra de 500 alunos que cursaram a disciplina de Estatística. Entre as questões levantadas estava: Você gostou da disciplina de Estatística? De 240 homens, 140 responderam que sim. De 260 mulheres, 200 responderam que sim. Para avaliar as probabilidades podemos organizar as informações em uma tabela. maneira:
+
+Qual é a probabilidade de que um aluno escolhido aleatoriamente:
+
+(a) H = Seja um homem?
+
+<img src=figura1.png>
+
+<img src=tabela.png>
+
+
+(b) G = Gostou da disciplina de Estatística?
+
+<img src=figura2.png>
+
+(c) M = Seja uma mulher?
+
+<img src=figura3.png>
+
+(d) NG = Não gostou da disciplina de Estatística?
+
+<img src=figura4.png>
+
+(e) Seja uma mulher ou gostou da disciplina de Estatística.
+
+<img src=figura5.png>
+
+(f ) Seja uma mulher e gostou da disciplina de Estatística.
+
+<img src=figura6.png>
+
+(g) Dado que o aluno escolhido gostou da disciplina de Estatística. Qual a probabilidade de que
+
+<img src=figura7.png>
+
+(h) Dado que o aluno escolhido é uma mulher. Qual a probabilidade de que ela não gostou da disciplina de Estatística?
+
+<img src=figura8.png>
+
+## Teorema do produto
+
+Da definição de probabilidade condicional P(A|B) = P(A∩B)/P(B),podemos obter o teorema do produto, que nos permite calcular a probabilidade da ocorrência simultânea de dois eventos.
+
+Sejam A e B eventos de Ω, a probabilidade de A e B ocorrerem juntos é dada por:
+
+P(A ∩ B) = P(A).P(B|A), com P(A) > 0
+ou
+P(A ∩ B) = P(B).P(A|B), com P(B) > 0.
+
+Dois eventos A e B são independentes quando a ocorrência de um não altera a probabilidade de ocorrência do outro. Desse modo,P(A ∩ B) = P(A).P(B).
+
+Exemplo:Uma empresária sabe por experiência, que 65% das mulheres que compram em
+sua loja preferem sandálias plataformas. Qual é a probabilidade de as duas próximas clientes comprarem cada uma delas, uma sandália plataforma? Vamos admitir que o evento A é a primeira cliente compra uma sandália plataforma e o evento B é a segunda cliente compra uma sandália plataforma. Então,
+
+P(A ∩ B) = (0,65)(0,65) = 0,4225.
