@@ -52,7 +52,7 @@ Distribuições discretas: Quando a variável que está sendo medida só pode as
 Várias tarefas, ou ações cotidianas são repetidas até que aquilo que desejamos ocorra (sucesso). Por exemplo, você pode ter de enviar uma mensagem diversas vezes até que o receptor efetivamente a receba – sucesso. Um problema como esse pode ser representado por uma distribuição geométrica.
 Quando você tiver interesse na probabilidade de um sucesso ocorrer em determinada tentativa x, a distribuição de probabilidades adequada será a distribuição discreta geométrica.
 
-Condições:
+**Condições:**
 
 A distribuição de probabilidade geométrica de uma variável aleatória x deve satisfazer às seguintes condições:
 
