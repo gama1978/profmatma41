@@ -1,0 +1,287 @@
+---
+title: "Relatório 04 - Distribuição de probabilidade"
+author: "Alex Gama"
+date: "23/10/2024"
+header-includes:
+  - \usepackage{titling}
+  - \pretitle{\begin{center}
+    \includegraphics[width=2in,height=2in]{ufsj.png}\LARGE\\}
+  - \posttitle{\end{center}}
+toc-title: "Sumário"
+output:
+  bookdown::html_document2: 
+    theme: journal
+    highlight: tango
+    toc: yes
+    number_sections: yes
+    includes:
+      in_header: logo.html
+  pdf_document:
+    
+    toc: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+--- 
+
+# Noções básicas
+
+## Objetivos
+
+• Descrever sobre as distribuições continuas e discretas.
+
+• Compreender a relação entre elas.
+
+
+## Introdução
+
+Uma distribuição de probabilidade pé um modelo matemático que relaciona um certo valor da variável em estudo com a sua probabilidade de ocorrência.
+
+Há dois tipos de distribuição de probabilidades:
+
+Distribuições contínuas: Quando a variável que está sendo medida pe expressa em uma escala contínua, como no caso de uma característica dimensional.
+
+Distribuições discretas: Quando a variável que está sendo medida só pode assumir certos valores, como por exemplo os valores inteiros: 0,1,2,etc.
+
+# Distribuição Geométrica
+
+
+Várias tarefas, ou ações cotidianas são repetidas até que aquilo que desejamos ocorra (sucesso). Por exemplo, você pode ter de enviar uma mensagem diversas vezes até que o receptor efetivamente a receba – sucesso. Um problema como esse pode ser representado por uma distribuição geométrica.
+Quando você tiver interesse na probabilidade de um sucesso ocorrer em determinada tentativa x, a distribuição de probabilidades adequada será a distribuição discreta geométrica.
+
+Condições:
+
+A distribuição de probabilidade geométrica de uma variável aleatória x deve satisfazer às seguintes condições:
+
+– A tentativa deve ser repetida até que um sucesso ocorra;
+
+– Cada tentativa repetida é independente uma da outra;
+
+– A probabilidade de sucesso p é a mesma para cada tentativa;
+
+– A variável aleatória x representa o número de tentativas até ocorrer o primeiro sucesso.
+
+
+**Função de probabilidade**
+
+
+
+Assim, a probabilidade de que o primeiro sucesso ocorra considerando a tentativa número x é:
+
+<img src=formula1.png>
+
+
+
+Sendo:
+K= número de tentativas
+p= probabilidade de sucesso
+
+Exemplo:
+
+Uma estatística precisa consultar informações públicas disponibilizadas em um site governamental que é protegido com um sistema de CAPTCHA. Para isso, ela programou um algoritmo baseado em OCR (optical character recognition) que resolve corretamente as CAPTCHAS com p = 0.5. Qual a probabilidade de quebrar a CAPTCHA na segunda tentativa?
+
+Solução:
+
+p (2) = (1 − 0.5) ^ 2 · 0.5 = 0.250.
+
+# Distribuição Hipergeométrica
+
+Como em uma distribuição binomial, na distribuição hipergeométrica em cada tentativa a variável pode assumir os valores: sucesso e fracasso; porém, o experimento é realizado sem reposição, de forma distinta dos experimentos binomiais, nos quais qualquer amostragem deve ser feita com reposição, porque cada tentativa deve ser independente das outras.
+
+**Função de probabilidade**
+
+Pense em uma população composta por N elementos, dos quais uma quantidade r de elementos possui a característica A, e a quantidade N-r de elementos possui a característica B. Uma amostra de n elementos é escolhida ao acaso, sem reposição. Para calcular a probabilidade de que essa amostra contenha k elementos com a característica A, utilizando o princípio multiplicativo, você pode aplicar a equação:
+
+<img src=formula2.png>
+
+
+Em que max(0, n−N+r) ≤ k ≤ min(r, n).
+Os pares (k, p(k)) formam a distribuição hipergeométrica de probabilidades.
+Observação: Se você definir a variável aleatória X como sendo o número de elementos na amostra que possui a característica A, então P(X=k) = p(k).
+
+**Exemplo**
+
+Considere um problema de controle de qualidade, e suponha que para um lote de cem peças, dez sejam defeituosas. Qual a probabilidade de não se obter peças defeituosas escolhendo, aleatoriamente, cinco peças sem reposição?
+Solução:
+Nesse caso, N=100; r=10; n=5 e como queremos probabilidade de NÃO se obter peças defeituosas, temos que calcular p(0).
+Portanto, a probabilidade de não se obter peças defeituosas, nesse contexto, é de aproximadamente 58,38%.
+
+<img src=exemplo.png>
+
+
+# Distribuição Binomial Negativa
+
+A distribuição binomial negativa descreve o número de falhas necessárias até que um número fixo de sucessos seja alcançado em uma série de ensaios independentes, cada um com a mesma probabilidade de sucesso.
+
+## Parâmetros:
+- \( r \): número fixo de sucessos desejados.
+- \( p \): probabilidade de sucesso em cada ensaio.
+
+## Função de probabilidade:
+\[
+P(X = x) = \binom{x + r - 1}{r - 1} p^r (1 - p)^x, \quad x = 0, 1, 2, \dots
+\]
+onde \( x \) é o número de falhas observadas antes de atingir \( r \) sucessos.
+
+## Exemplo de aplicação:
+Usada em estudos de qualidade para modelar o número de defeitos encontrados até atingir um número mínimo de produtos aceitáveis.
+
+---
+
+# Distribuição Multinomial
+
+A distribuição multinomial é uma generalização da distribuição binomial para mais de duas categorias. Ela descreve os resultados de \( n \) ensaios independentes, onde cada ensaio resulta em exatamente uma de \( k \) categorias, com probabilidades associadas.
+
+## Parâmetros:
+- \( n \): número total de ensaios.
+- \( p_1, p_2, \dots, p_k \): probabilidades associadas às \( k \) categorias (sendo \( \sum_{i=1}^k p_i = 1 \)).
+
+## Função de probabilidade:
+\[
+P(X_1 = x_1, X_2 = x_2, \dots, X_k = x_k) = \frac{n!}{x_1! x_2! \dots x_k!} p_1^{x_1} p_2^{x_2} \dots p_k^{x_k},
+\]
+onde \( x_1 + x_2 + \dots + x_k = n \) e \( x_i \) é o número de vezes que a \( i \)-ésima categoria foi observada.
+
+## Exemplo de aplicação:
+Utilizada em estudos de classificações, como pesquisas eleitorais em que se registram votos para vários candidatos.
+
+---
+
+# Distribuição Uniforme
+
+A distribuição uniforme descreve uma variável aleatória que tem a mesma probabilidade de assumir qualquer valor dentro de um intervalo definido.
+
+## Uniforme Discreta
+Definida para um conjunto finito de valores igualmente espaçados.
+
+### Função de probabilidade:
+\[
+P(X = x) = \frac{1}{n}, \quad x \in \{x_1, x_2, \dots, x_n\}.
+\]
+
+## Uniforme Contínua
+Definida para intervalos contínuos de valores.
+
+### Função de densidade:
+\[
+f(x) = 
+\begin{cases} 
+\frac{1}{b - a}, & \text{se } a \leq x \leq b, \\
+0, & \text{caso contrário}.
+\end{cases}
+\]
+onde \( a \) e \( b \) são os limites do intervalo.
+
+## Exemplo de aplicação:
+- **Discreta**: Lançamento de um dado justo, em que cada face tem a mesma probabilidade.
+- **Contínua**: Gerar números aleatórios entre 0 e 1 para simulações computacionais.
+
+# Distribuição Exponencial
+
+A distribuição exponencial é usada para modelar o tempo entre eventos em um processo de Poisson, onde os eventos ocorrem de forma contínua e independente.
+
+## Parâmetro:
+- \( \lambda \): taxa de ocorrência de eventos (\( \lambda > 0 \)).
+
+## Função de densidade de probabilidade:
+\[
+f(x) = 
+\begin{cases} 
+\lambda e^{-\lambda x}, & x \geq 0, \\
+0, & x < 0.
+\end{cases}
+\]
+
+## Propriedades:
+- Esperança (média): \( \mathbb{E}[X] = \frac{1}{\lambda} \).
+- Variância: \( \text{Var}(X) = \frac{1}{\lambda^2} \).
+
+## Exemplo de aplicação:
+Modelagem de tempos de espera, como o tempo entre chegadas de clientes em um sistema de filas.
+
+---
+
+# Distribuição Gama
+
+A distribuição gama generaliza a distribuição exponencial e é usada para modelar somas de variáveis exponenciais independentes.
+
+## Parâmetros:
+- \( \alpha \): parâmetro de forma (\( \alpha > 0 \)).
+- \( \beta \): parâmetro de escala (\( \beta > 0 \)).
+
+## Função de densidade de probabilidade:
+\[
+f(x) = 
+\begin{cases} 
+\frac{x^{\alpha - 1} e^{-x / \beta}}{\beta^\alpha \Gamma(\alpha)}, & x \geq 0, \\
+0, & x < 0.
+\end{cases}
+\]
+onde \( \Gamma(\alpha) \) é a função gama: 
+\[
+\Gamma(\alpha) = \int_0^\infty t^{\alpha - 1} e^{-t} \, dt.
+\]
+
+## Propriedades:
+- Esperança (média): \( \mathbb{E}[X] = \alpha \beta \).
+- Variância: \( \text{Var}(X) = \alpha \beta^2 \).
+
+## Exemplo de aplicação:
+Modelagem de tempos de vida, como o tempo até falha de um dispositivo eletrônico.
+
+---
+
+# Distribuição Qui-Quadrado
+
+A distribuição qui-quadrado (\( \chi^2 \)) é uma distribuição de soma de quadrados de \( k \) variáveis normais padrão independentes.
+
+## Parâmetro:
+- \( k \): graus de liberdade (\( k > 0 \)).
+
+## Função de densidade de probabilidade:
+\[
+f(x) = 
+\begin{cases} 
+\frac{x^{k/2 - 1} e^{-x/2}}{2^{k/2} \Gamma(k/2)}, & x \geq 0, \\
+0, & x < 0.
+\end{cases}
+\]
+
+## Propriedades:
+- Esperança (média): \( \mathbb{E}[X] = k \).
+- Variância: \( \text{Var}(X) = 2k \).
+
+## Exemplo de aplicação:
+Usada em testes estatísticos, como o teste de ajuste ou independência.
+
+---
+
+# Distribuição F
+
+A distribuição F é usada para comparar variâncias em amostras independentes e é definida como a razão de duas variáveis qui-quadrado independentes, normalizadas pelos respectivos graus de liberdade.
+
+## Parâmetros:
+- \( d_1 \): graus de liberdade do numerador.
+- \( d_2 \): graus de liberdade do denominador.
+
+## Função de densidade de probabilidade:
+\[
+f(x) = 
+\begin{cases} 
+\frac{\sqrt{\frac{(d_1 x)^{d_1} d_2^{d_2}}{(d_1 x + d_2)^{d_1 + d_2}}}}{x B\left(\frac{d_1}{2}, \frac{d_2}{2}\right)}, & x > 0, \\
+0, & x \leq 0.
+\end{cases}
+\]
+onde \( B(a, b) \) é a função beta.
+
+## Propriedades:
+- Esperança (média): \( \mathbb{E}[X] = \frac{d_2}{d_2 - 2} \) para \( d_2 > 2 \).
+- Variância: \( \text{Var}(X) = \frac{2d_2^2 (d_1 + d_2 - 2)}{d_1 (d_2 - 2)^2 (d_2 - 4)} \) para \( d_2 > 4 \).
+
+## Exemplo de aplicação:
+Usada em análises de variância (ANOVA) para testar diferenças entre médias de grupos.
+
+---
