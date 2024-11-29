@@ -1,6 +1,6 @@
 ---
 title: "Relatórios da Disciplina MA 41 - Estatística e Probabilidade (PROFMAT)"
-author: "[Ben Dêivide](https://bendeivide.github.io) | [DEFIM/UFSJ](https://ufsj.edu.br)"
+author: "[Alex Gama](https://gama1978.github.io/profmatma41/) | [DEFIM/UFSJ](https://ufsj.edu.br)"
 date: "`r format(Sys.time(), '%d %B, %Y, %Hh:%Mmin:%Sseg')`"
 toc-title: "Sumário"
 output:
@@ -170,5 +170,8 @@ Relatórios desenvolvidos:
 
 - [Relatório 01 (13/09/2024)](rel01/index.html){target="_blank"}
 - [Relatório 02 (13/09/2024)](rel02/index.html){target="_blank"}
-- [Relatório 03 (04/05/2022)](rel03/index.html){target="_blank"}
-- ...
+- [Relatório 03 (13/10/2024)](rel03/index.html){target="_blank"}
+- [Relatório 04 (04/11/2024)](rel04/index.html){target="_blank"}
+- [Relatório 05 (04/11/2024)](rel05/index.html){target="_blank"}
+- [Relatório 06 (25/11/2024)](rel06/index.html){target="_blank"}
+- [Relatório 07 (25/11/2024)](rel07/index.html){target="_blank"}
