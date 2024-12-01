@@ -1,6 +1,6 @@
 ---
-title: "Relatório 03 - Distribuição de probabilidade"
-author: "Ben Dêivide"
+title: "Relatório 05 - Teorema do Limite Central - TCL"
+author: "Alex Gama"
 date: "12/04/2022"
 header-includes:
   - \usepackage{titling}
@@ -29,9 +29,137 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever o objetivo do relatório!
+Demonstrar o TLC;
 
-# Apresentação do relatório
+Simular a Distribuição de Gumbel se aproximando da distribuição NOrmal.
 
-Aqui será o local para apresentar o material sobre o relatório.
+Provar que a  distribuição de Gumbel, pode ser convertida em uma distribuição Normal, confirmando o TLC.
+
+# Introdução
+
+A demonstração do Teorema do Limite Central (TLC) utilizando a distribuição de Gumbel pode ser feita numericamente por meio de simulações. A ideia principal é observar como a soma de variáveis aleatórias independentes e identicamente distribuídas provenientes de uma distribuição de Gumbel se aproxima de uma distribuição normal quando o número de somas aumenta.
+
+# Teorema do Limite Central (TLC) com Função Característica, Série de Taylor e Função Geradora
+
+## 1. Função Característica
+
+A **função característica** de uma variável aleatória \(X\) é definida como:
+\[
+\phi_X(t) = \mathbb{E}[e^{itX}],
+\]
+onde \(t \in \mathbb{R}\). Ela captura todas as propriedades da distribuição de \(X\).
+
+Para a soma padronizada \(Z_n = \frac{\sum_{i=1}^n X_i - n\mu}{\sqrt{n}\sigma}\), a função característica é:
+\[
+\phi_{Z_n}(t) = \mathbb{E}\left[e^{itZ_n}\right] = \mathbb{E}\left[e^{it \cdot \frac{1}{\sqrt{n}} \sum_{i=1}^n Y_i}\right],
+\]
+onde \(Y_i = \frac{X_i - \mu}{\sigma}\). Como os \(Y_i\) são i.i.d., podemos fatorar:
+\[
+\phi_{Z_n}(t) = \left(\phi_Y\left(\frac{t}{\sqrt{n}}\right)\right)^n,
+\]
+onde \(\phi_Y(t)\) é a função característica de \(Y_i\).
+
+---
+
+## 2. Expansão em Série de Taylor
+
+Expandimos \(\phi_Y(t)\) em série de Taylor em torno de \(t = 0\):
+\[
+\phi_Y(t) = \mathbb{E}[e^{itY}] = 1 + it\mathbb{E}[Y] - \frac{t^2}{2}\mathbb{E}[Y^2] + o(t^2).
+\]
+
+Como \(Y_i\) é padronizada (\(\mathbb{E}[Y] = 0\), \(\mathbb{E}[Y^2] = 1\)):
+\[
+\phi_Y(t) = 1 - \frac{t^2}{2} + o(t^2).
+\]
+
+Substituímos na expressão para \(\phi_{Z_n}(t)\):
+\[
+\phi_{Z_n}(t) = \left(1 - \frac{t^2}{2n} + o\left(\frac{1}{n}\right)\right)^n.
+\]
+
+---
+
+## 3. Aproximação Exponencial
+
+Usamos a aproximação:
+\[
+\left(1 + \frac{x}{n}\right)^n \to e^x, \text{ quando } n \to \infty.
+\]
+
+Assim:
+\[
+\phi_{Z_n}(t) \to e^{-\frac{t^2}{2}}, \text{ quando } n \to \infty.
+\]
+
+A função característica \(e^{-\frac{t^2}{2}}\) corresponde exatamente à função característica de uma variável normal padrão \(\mathcal{N}(0, 1)\). Logo:
+\[
+Z_n \xrightarrow{d} \mathcal{N}(0, 1).
+\]
+
+---
+
+## 4. Relação com a Função Geradora de Momentos
+
+A função geradora de momentos (MGF) \(M_X(t)\) de uma variável \(X\) está relacionada à função característica:
+\[
+M_X(t) = \phi_X(-it) = \mathbb{E}[e^{tX}].
+\]
+
+Para somas de variáveis i.i.d., a MGF também combina multiplicativamente. O mesmo raciocínio da expansão em Taylor e aproximação exponencial se aplica. A padronização assegura que a soma converge para a normalidade.
+
+---
+
+# Demonstrações do Teorema do Limite Central(TLC) e simulações da distribuição de Gumbel
+
+
+
+## A Distribuição de Gumbel
+
+A **função densidade de probabilidade (PDF)** da distribuição de Gumbel é dada por:
+\[
+f(x) = \frac{1}{\beta} e^{-\frac{x - \mu}{\beta}} e^{-e^{-\frac{x - \mu}{\beta}}},
+\]
+onde:
+
+- \(\mu\) é o parâmetro de **localização**,
+- \(\beta > 0\) é o parâmetro de **escala**.
+
+Nesta demonstração, consideraremos os seguintes valores:
+
+- \(\mu = 0\),
+- \(\beta = 1\).
+
+# Simulação
+
+## Passos:
+
+1. Gerar \(n\) amostras da distribuição de Gumbel.
+2. Calcular a soma de \(k\) dessas amostras para diferentes valores de \(k\).
+3. Padronizar as somas (\(Z = \frac{X - \mathbb{E}[X]}{\sigma}\)) usando a média (\(\mathbb{E}[X]\)) e o desvio padrão (\(\sigma\)) das somas.
+4. Comparar o histograma das somas padronizadas com a densidade da distribuição normal padrão.
+
+## Código gerador dos gráficos
+
+<img src=graficos2.png>
+
+<img src=graficos3.png>
+
+## Apresentação dos Gráficos
+
+<img src=graficos.png>
+
+## Resultados
+
+A partir da análise dos gráficos que mostraram os resultados da simulação do Teorema do Limite Central usando a distribuição de Gumbel foi possível observar que com o aumento de k, o histograma das somas padronizadas se aproxima da curva da distribuição normal padrão (linha vermelha). Isso ilustra o comportamento previsto pelo TLC, mesmo para distribuições assimétricas como a de Gumbel.
+
+
+# Conclusões:
+
+A combinação da **função característica**, a **expansão de Taylor** e a **função geradora de momentos** permite demonstrar o TLC. A chave está no comportamento assintótico da função característica das somas padronizadas, que converge para a função característica da normal padrão \(\mathcal{N}(0, 1)\).
+
+Por meio dessa simulação, observamos que mesmo para uma distribuição assimétrica como a de Gumbel, a soma de variáveis aleatórias tende a uma distribuição normal conforme o número de variáveis aumenta, validando o Teorema do Limite Central.
+
+---
+
 
