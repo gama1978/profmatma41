@@ -1,6 +1,6 @@
 ---
-title: "Relatório 03 - Distribuição de probabilidade"
-author: "Ben Dêivide"
+title: "Relatório 06 - Estimadores Pontuais"
+author: "Alex Gama"
 date: "12/04/2022"
 header-includes:
   - \usepackage{titling}
@@ -29,9 +29,262 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever o objetivo do relatório!
+# Método dos Momentos: Normal e Binomial
 
-# Apresentação do relatório
+O **método dos momentos** é uma técnica estatística para estimar os parâmetros de uma distribuição. Ele utiliza momentos populacionais e amostrais para derivar estimativas. Abaixo, é descrito como aplicar o método para as distribuições **Normal** e **Binomial**.
 
-Aqui será o local para apresentar o material sobre o relatório.
+---
+
+## 1. Conceito de Momento
+
+Os momentos populacionais de uma variável \( X \) são definidos como:
+\[
+\mu_k = E[X^k]
+\]
+- \( \mu_k \): \( k \)-ésimo momento em relação à origem.
+- Para momentos em relação à média:
+\[
+\mu_k' = E[(X - \mu)^k]
+\]
+
+Os momentos amostrais correspondentes são calculados como:
+\[
+m_k = \frac{1}{n} \sum_{i=1}^n x_i^k
+\]
+- \( m_k \): \( k \)-ésimo momento amostral.
+
+O **método dos momentos** consiste em igualar os momentos populacionais aos amostrais e resolver as equações para estimar os parâmetros da distribuição.
+
+---
+
+## 2. Aplicação à Distribuição Normal
+
+A distribuição normal é definida por dois parâmetros:
+- \( \mu \): média.
+- \( \sigma^2 \): variância.
+
+### Momentos Populacionais
+1. Primeiro momento (média):
+   \[
+   \mu_1 = \mu
+   \]
+2. Segundo momento central (variância):
+   \[
+   \mu_2' = \sigma^2
+   \]
+
+### Estimativas pelos Momentos
+- Igualar os momentos populacionais aos amostrais:
+  1. Para a média:
+     \[
+     m_1 = \bar{x} \quad \Rightarrow \quad \hat{\mu} = \bar{x}
+     \]
+  2. Para a variância:
+     \[
+     m_2' = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2 \quad \Rightarrow \quad \hat{\sigma}^2 = m_2'
+     \]
+
+---
+
+## 3. Aplicação à Distribuição Binomial
+
+A distribuição binomial é definida por dois parâmetros:
+- \( n \): número de ensaios.
+- \( p \): probabilidade de sucesso em cada ensaio.
+
+### Momentos Populacionais
+1. Primeiro momento (média):
+   \[
+   \mu_1 = n \cdot p
+   \]
+2. Segundo momento central (variância):
+   \[
+   \mu_2' = n \cdot p \cdot (1 - p)
+   \]
+
+### Estimativas pelos Momentos
+- Igualar os momentos populacionais aos amostrais:
+  1. Para a média:
+     \[
+     m_1 = \bar{x} \quad \Rightarrow \quad \hat{n} \cdot \hat{p} = \bar{x}
+     \]
+  2. Para a variância:
+     \[
+     m_2' = \text{Var}(X) = \hat{n} \cdot \hat{p} \cdot (1 - \hat{p})
+     \]
+
+- Resolver o sistema de equações para obter \( \hat{n} \) e \( \hat{p} \):
+  1. \( \hat{p} = \frac{\bar{x}}{\hat{n}} \)
+  2. Substituir em \( m_2' \) e ajustar \( \hat{n} \).
+
+---
+
+## 4. Resumo das Estimativas
+
+| Distribuição | Parâmetro(s)          | Estimativa(s) pelo Método dos Momentos |
+|--------------|------------------------|-----------------------------------------|
+| Normal       | \( \mu, \sigma^2 \)   | \( \hat{\mu} = \bar{x}, \hat{\sigma}^2 = m_2' \) |
+| Binomial     | \( n, p \)            | \( \hat{p} = \frac{\bar{x}}{\hat{n}}, \hat{n} \) de \( m_2' \) |
+
+---
+
+## Simulação e resultado
+
+### Código gerador do gráfico
+
+<img src=momento1.png>
+
+<img src=momento2.png>
+
+### Resultados
+
+<img src=grafmomento.png>
+
+# Estimação por Máxima Verossimilhança para a Distribuição Normal
+
+Considere uma amostra \( X = \{x_1, x_2, \ldots, x_n\} \) extraída de uma população que segue uma **distribuição normal** \( N(\mu, \sigma^2) \). Nosso objetivo é estimar os parâmetros \( \mu \) (média) e \( \sigma^2 \) (variância) usando o método da máxima verossimilhança.
+
+---
+
+## 1. Função de verossimilhança
+
+A função de densidade da normal é dada por:  
+\[
+f(x | \mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+\]
+
+Para uma amostra independente \( X = \{x_1, x_2, \ldots, x_n\} \), a função de verossimilhança é:  
+\[
+L(\mu, \sigma^2) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x_i - \mu)^2}{2\sigma^2}}
+\]
+
+---
+
+## 2. Log-verossimilhança
+
+Para facilitar os cálculos, trabalhamos com o logaritmo da função de verossimilhança:  
+\[
+\ell(\mu, \sigma^2) = \ln L(\mu, \sigma^2) = -\frac{n}{2} \ln(2\pi) - \frac{n}{2} \ln(\sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^n (x_i - \mu)^2
+\]
+
+---
+
+## 3. Maximização
+
+Para encontrar os estimadores de máxima verossimilhança (EMV), derivamos \( \ell(\mu, \sigma^2) \) em relação a \( \mu \) e \( \sigma^2 \), e igualamos a zero.
+
+a) Derivada em relação a \( \mu \):  
+\[
+\frac{\partial \ell}{\partial \mu} = \frac{1}{\sigma^2} \sum_{i=1}^n (x_i - \mu)
+\]
+Igualando a zero:  
+\[
+\hat{\mu} = \frac{1}{n} \sum_{i=1}^n x_i
+\]
+Ou seja, o EMV da média \( \mu \) é a **média amostral** \( \hat{\mu} \).
+
+b) Derivada em relação a \( \sigma^2 \):  
+\[
+\frac{\partial \ell}{\partial \sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2(\sigma^2)^2} \sum_{i=1}^n (x_i - \mu)^2
+\]
+Igualando a zero:  
+\[
+\hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \hat{\mu})^2
+\]
+Ou seja, o EMV da variância \( \sigma^2 \) é a **variância amostral não corrigida**.
+
+---
+
+## 4. Estimadores Finais
+
+- \( \hat{\mu} = \frac{1}{n} \sum_{i=1}^n x_i \) (média amostral)
+- \( \hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \hat{\mu})^2 \) (variância amostral)
+
+## Simulação e resultado
+
+### Código gerador do gráfico
+
+<img src=veros1.png>
+
+<img src=veros2.png>
+
+### Resultados
+
+<img src=grafveros.png>
+
+
+# Função Linear Característica no Método dos Mínimos Quadrados
+
+O **Método dos Mínimos Quadrados** é uma técnica amplamente utilizada para ajustar um modelo linear a um conjunto de dados. A ideia é minimizar a soma dos quadrados das diferenças entre os valores observados e os valores previstos pelo modelo.
+
+---
+
+## 1. Modelo Linear
+
+A função linear característica é definida como:
+\[
+y = \beta_0 + \beta_1 x
+\]
+- \( y \): Variável dependente (resposta).
+- \( x \): Variável independente (preditor).
+- \( \beta_0 \): Intercepto da reta.
+- \( \beta_1 \): Inclinação da reta.
+
+---
+
+## 2. Função de Erro (Soma dos Quadrados dos Resíduos)
+
+A função de erro é a soma dos quadrados das diferenças (\( e_i \)) entre os valores observados (\( y_i \)) e os valores ajustados (\( \hat{y}_i \)):
+\[
+S(\beta_0, \beta_1) = \sum_{i=1}^n (y_i - (\beta_0 + \beta_1 x_i))^2
+\]
+- \( n \): Número de observações.
+- \( y_i \): Valor observado.
+- \( \hat{y}_i = \beta_0 + \beta_1 x_i \): Valor ajustado pelo modelo.
+
+O objetivo do método é encontrar os valores de \( \beta_0 \) e \( \beta_1 \) que minimizem \( S(\beta_0, \beta_1) \).
+
+---
+
+## 3. Derivação das Equações Normais
+
+Minimizamos \( S(\beta_0, \beta_1) \) derivando em relação a \( \beta_0 \) e \( \beta_1 \) e igualando as derivadas a zero:
+
+### 3.1. Derivada em relação a \( \beta_0 \):
+\[
+\frac{\partial S}{\partial \beta_0} = -2 \sum_{i=1}^n (y_i - \beta_0 - \beta_1 x_i) = 0
+\]
+
+### 3.2. Derivada em relação a \( \beta_1 \):
+\[
+\frac{\partial S}{\partial \beta_1} = -2 \sum_{i=1}^n x_i (y_i - \beta_0 - \beta_1 x_i) = 0
+\]
+
+Resolvendo essas equações simultaneamente, obtemos as **equações normais**:
+1. \[
+   \sum y_i = n \beta_0 + \beta_1 \sum x_i
+   \]
+2. \[
+   \sum x_i y_i = \beta_0 \sum x_i + \beta_1 \sum x_i^2
+   \]
+
+---
+
+## 4. Solução para os Coeficientes
+
+Resolvendo as equações normais, obtemos os estimadores de \( \beta_0 \) e \( \beta_1 \):
+
+1. Inclinação (\( \beta_1 \)):
+   \[
+   \beta_1 = \frac{n \sum x_i y_i - \sum x_i \sum y_i}{n \sum x_i^2 - (\sum x_i)^2}
+   \]
+
+2. Intercepto (\( \beta_0 \)):
+   \[
+   \beta_0 = \bar{y} - \beta_1 \bar{x}
+   \]
+   - \( \bar{x} \): Média dos valores de \( x \).
+   - \( \bar{y} \): Média dos valores de \( y \).
+
+---
 
