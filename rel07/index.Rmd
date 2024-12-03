@@ -1,6 +1,6 @@
 ---
-title: "Relatório 03 - Distribuição de probabilidade"
-author: "Ben Dêivide"
+title: "Relatório 07 - Estimador Intervalar"
+author: "Alex Gama"
 date: "12/04/2022"
 header-includes:
   - \usepackage{titling}
@@ -29,9 +29,211 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever o objetivo do relatório!
+O objetivo deste relátorio é descrever sobre o teste de hipótese homocedastidade,
+simular e apresentar os cálculos analíticos de uma distribuição pelo metodo da quantidade pivotal e aplicar o intervalo de confiança.
 
-# Apresentação do relatório
+---
+title: "Estimador Intervalar"
+output: html_document
+---
 
-Aqui será o local para apresentar o material sobre o relatório.
+# Introdução
 
+Quando a variância populacional (\( \sigma^2 \)) é desconhecida, o intervalo de confiança para a média é construído usando a **distribuição \( t \)-Student**.
+
+## Fórmula do Intervalo de Confiança
+
+\[
+IC = \left[ \bar{x} - t_{\alpha/2, n-1} \cdot \frac{s}{\sqrt{n}}, \, \bar{x} + t_{\alpha/2, n-1} \cdot \frac{s}{\sqrt{n}} \right]
+\]
+
+Onde:
+- \( \bar{x} \): média amostral.
+- \( s \): desvio padrão amostral.
+- \( n \): tamanho da amostra.
+- \( t_{\alpha/2, n-1} \): valor crítico da distribuição \( t \)-Student com \( n-1 \) graus de liberdade.
+- \( 1-\alpha \): nível de confiança.
+
+## Quando Usar?
+
+1. A população segue uma **distribuição normal** ou \( n \geq 30 \) (pelo Teorema Central do Limite).
+2. A variância populacional (\( \sigma^2 \)) é **desconhecida**, sendo substituída pelo desvio padrão amostral (\( s \)).
+
+---
+
+## Exemplo Prático
+
+Vamos calcular o intervalo de confiança para os seguintes dados:
+
+- Média amostral (\( \bar{x} \)) = 50.  
+- Desvio padrão amostral (\( s \)) = 10.  
+- Tamanho da amostra (\( n \)) = 25.  
+- Nível de confiança (\( 1-\alpha \)) = 95%.
+
+### Código gerador em R
+
+<img src=codigo1.png>
+
+### Resultado apresentado
+
+<img src=resultado1.png>
+
+# Homocedastidade
+
+A homocedasticidade demanda que as variações em torno da linha de regressão sejam constantes para todos os valores de X. Isto expressa que Y varia na mesma proporção, quando X for um valor baixo e quando X for um valor elevado. O contrário desse fenômeno é conhecido por heterocedasticidade, ou seja, a variância não será constante para os valores X e Y.
+
+## Diferenças entre Homocedasticidade e Heterocedasticidade
+
+**Homocedasticidade**
+
+A variância dos erros é constante para todos os valores das variáveis independentes.
+É uma suposição fundamental em muitos modelos estatísticos, como a regressão linear clássica.
+Visualmente, ao plotar os resíduos contra os valores preditos, eles aparecem distribuídos de maneira uniforme, sem padrão aparente.
+
+**Heterocedasticidade**
+
+
+A variância dos erros muda dependendo do valor das variáveis independentes. Ou seja, os erros não têm uma dispersão uniforme.
+Indica problemas no modelo que podem afetar as inferências estatísticas, como p-valores e intervalos de confiança.
+Visualmente, ao plotar os resíduos contra os valores preditos, você verá um padrão, como um funil (a variância aumenta ou diminui sistematicamente).
+
+## Quadro comparativo
+
+<img src=tabela.png>
+
+# Distribuição da Quantidade Pivotal(Q.P)
+
+Neste relatório, demonstramos a distribuição da quantidade pivotal de forma **analítica** e **gráfica**. Consideramos uma variável aleatória \( X \) com distribuição normal \( N(\mu, \sigma^2) \), para a qual a quantidade pivotal é dada por:
+
+\[
+Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}}
+\]
+
+onde \( Z \) segue uma distribuição normal padrão \( N(0, 1) \).
+
+---
+
+## Código gerador em R
+
+<img src=cod1.png>
+
+## Resultado apresentado
+
+<img src=distpivotal.png>
+
+# Apresentação da aplicação do Intervalo de Confiança(I.C) em conjunto de dados
+
+**Problema proposto**
+
+Para avaliar a qualidade dos rolamentos produzidos,um engenheiro recolheu uma amostras aleatória de  12 esferas da produção diária.Usando um paquímetro ele obteve as seguintes medições 8,2 - 8,3 - 8,4 - 8,2 - 8,2 8,4 - 8,3 - 8,2 - 8,4 - 8,4 - 8,2 - 8,4  para as esferas. Calcule o intervalo de confiança para a média das esferas produzidas com 95% de confiança.
+
+## Dados Fornecidos do problema
+Medições da amostra:
+\[
+\{8.2, 8.3, 8.4, 8.2, 8.2, 8.4, 8.3, 8.2, 8.4, 8.4, 8.2, 8.4\}
+\]
+Tamanho da amostra (\(n\)): 12  
+Nível de confiança: \(95\%\)
+
+## Cálculos 
+
+
+###  Cálculo da Média (\(\bar{x}\))
+A fórmula da média é:
+\[
+\bar{x} = \frac{\text{soma dos dados}}{n}
+\]
+Substituindo os valores:
+\[
+\bar{x} = \frac{8.2 + 8.3 + 8.4 + 8.2 + 8.2 + 8.4 + 8.3 + 8.2 + 8.4 + 8.4 + 8.2 + 8.4}{12}
+\]
+\[
+\bar{x} = \frac{99.6}{12} = 8.3
+\]
+
+---
+
+### Cálculo do Desvio Padrão Amostral (\(s\))
+A fórmula do desvio padrão amostral é:
+\[
+s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n-1}}
+\]
+
+**Diferenças dos quadrados**
+
+Para cada dado (\(x_i\)), calculamos \((x_i - \bar{x})^2\):  
+\[
+\begin{aligned}
+(8.2 - 8.3)^2 & = 0.01, \\
+(8.3 - 8.3)^2 & = 0.00, \\
+(8.4 - 8.3)^2 & = 0.01, \\
+(8.2 - 8.3)^2 & = 0.01, \\
+(8.2 - 8.3)^2 & = 0.01, \\
+(8.4 - 8.3)^2 & = 0.01, \\
+(8.3 - 8.3)^2 & = 0.00, \\
+(8.2 - 8.3)^2 & = 0.01, \\
+(8.4 - 8.3)^2 & = 0.01, \\
+(8.4 - 8.3)^2 & = 0.01, \\
+(8.2 - 8.3)^2 & = 0.01, \\
+(8.4 - 8.3)^2 & = 0.01.
+\end{aligned}
+\]
+
+**Soma das diferenças dos quadrados**
+
+\[
+\sum (x_i - \bar{x})^2 = 0.01 + 0.00 + 0.01 + 0.01 + 0.01 + 0.01 + 0.00 + 0.01 + 0.01 + 0.01 + 0.01 + 0.01 = 0.1
+\]
+
+**Substituindo os valores encontrados temos:**
+\[
+s = \sqrt{\frac{0.1}{12-1}} = \sqrt{\frac{0.1}{11}} \approx \sqrt{0.00909} \approx 0.08165
+\]
+
+---
+
+###  Valor Crítico (\(t^*\))
+Para um nível de confiança de \(95\%\) e \(n-1 = 11\) graus de liberdade, o valor crítico \(t^*\) obtido da tabela \(t\)-Student é:
+\[
+t^* \approx 2.201
+\]
+
+---
+
+### Cálculo do Intervalo de Confiança
+A fórmula do intervalo de confiança é:
+\[
+IC = \bar{x} \pm t^* \cdot \frac{s}{\sqrt{n}}
+\]
+ **Erro Padrão**
+\[
+\text{Erro Padrão} = \frac{s}{\sqrt{n}} = \frac{0.08165}{\sqrt{12}} \approx \frac{0.08165}{3.4641} \approx 0.02356
+\]
+
+**Margem de Erro**
+\[
+\text{Margem de Erro} = t^* \cdot \text{Erro Padrão} = 2.201 \cdot 0.02356 \approx 0.0519
+\]
+
+**Intervalo de Confiança**
+\[
+IC = 8.3 \pm 0.0519
+\]
+\[
+IC = (8.3 - 0.0519, 8.3 + 0.0519)
+\]
+\[
+IC = (8.2481, 8.3519)
+\]
+
+---
+
+## Resultados Finais
+O intervalo de confiança para a média das esferas produzidas, com \(95\%\) de confiança, é:
+\[
+(8.248, 8.352)
+\]
+
+## Simulação em R
+
+<img src=resultadofim.png>
